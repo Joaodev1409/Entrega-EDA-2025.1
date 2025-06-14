@@ -1,7 +1,5 @@
-package atividade02;
-
 /*
- * Interface para implementação da classe "Lista",
+ * Interface para implementaï¿½ï¿½o da classe "Lista",
  * que deve ser implementada como uma Lista Duplamente Encadeada
  */
 public interface Lista_IF  {
