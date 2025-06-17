@@ -52,21 +52,6 @@ public class Lista implements Lista_IF {
         throw new ElementoNaoEncontradoException();
     }
 
-    @Override
-    public void insert(Integer chave) {
-        NoDuplamenteEncadeado novoNo = new NoDuplamenteEncadeado(chave);
-        if (isEmpty()) {
-            novoNo.setProximo(cauda);
-            cabeca.setProximo(novoNo);
-        } else {
-            NoDuplamenteEncadeado apontador = cabeca;
-            while (apontador.getProximo() != cauda) {
-                apontador = apontador.getProximo();
-            }
-            novoNo.setProximo(cauda);
-            apontador.setProximo(novoNo);
-        }
-    }
 
     public void insert(Integer chave, int index) {
         NoDuplamenteEncadeado novoNo = new NoDuplamenteEncadeado(chave);
@@ -82,14 +67,38 @@ public class Lista implements Lista_IF {
             apontador.setProximo(novoNo);
         }
     }
+    
+    @Override
+    public void insert(Integer chave) {
+        NoDuplamenteEncadeado novoNo = new NoDuplamenteEncadeado(chave);
+        if (isEmpty()) {
+            novoNo.setProximo(cauda);
+            cabeca.setProximo(novoNo);
+        } else {
+            NoDuplamenteEncadeado apontador = cauda.getAnterior();
+            /*
+            while (apontador.getProximo() != cauda) {
+                apontador = apontador.getProximo();
+            }
+                */
+            apontador.setProximo(novoNo);
+            novoNo.setAnterior(apontador);
+            novoNo.setProximo(cauda);
+            cauda.setAnterior(novoNo);
+        }
+    }
 
+    @Override
     public Integer remove(Integer chave) throws ListaVaziaException, ElementoNaoEncontradoException {
         if (isEmpty()) throw new ListaVaziaException();
         NoDuplamenteEncadeado apontador = cabeca;
         while (apontador.getProximo() != cauda) {
             if (apontador.getProximo().getChave().equals(chave)) {
+
                 NoDuplamenteEncadeado retorno = apontador.getProximo();
                 apontador.setProximo(retorno.getProximo());
+                retorno.getProximo().setAnterior(apontador);
+    
                 return retorno.chave;
             }
             apontador = apontador.getProximo();
