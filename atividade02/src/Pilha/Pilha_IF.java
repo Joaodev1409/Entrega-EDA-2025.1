@@ -1,3 +1,4 @@
+package Pilha;
 /*
  * Interface para implementa��o da classe "Pilha",
  * a qual deve ser implementada com uma Lista Duplamente Encadeada

@@ -1,56 +1,51 @@
 package Lista;
 
-public class NoDuplamenteEncadeado<T> {
-    	protected T chave;
-	protected NoDuplamenteEncadeado<T> proximo = null;
+
+public class NoDuplamenteEncadeado{
+    protected Integer chave;
+	protected NoDuplamenteEncadeado proximo = null;
+    protected NoDuplamenteEncadeado anterior = null;
 	
 	public NoDuplamenteEncadeado() {
 		this.setChave(null);
 		this.setProximo(null);
 	}
 	
-	public NoDuplamenteEncadeado(T chave) {
+	public NoDuplamenteEncadeado(Integer chave) {
 		this.setChave(chave);
 		this.setProximo(null);
 	}
 	
-	public NoDuplamenteEncadeado(T chave, NoDuplamenteEncadeado<T> proximo) {
+	public NoDuplamenteEncadeado(Integer chave, NoDuplamenteEncadeado proximo) {
 		this.setChave(chave);
 		this.setProximo(proximo);
 	}
 
-	public T getChave() {
+	public Integer getChave() {
 		return chave;
 	}
 
-	public void setChave(T chave) {
+	public void setChave(Integer chave) {
 		this.chave = chave;
 	}
 
-	public NoDuplamenteEncadeado<T> getProximo() {
+	public NoDuplamenteEncadeado getProximo() {
 		return proximo;
 	}
 
-	public void setProximo(NoDuplamenteEncadeado<T> proximo) {
+	public void setProximo(NoDuplamenteEncadeado proximo) {
 		this.proximo = proximo;
+	}
+
+    public NoDuplamenteEncadeado getAnterior() {
+		return anterior;
+	}
+	public void setAnterior(NoDuplamenteEncadeado anterior) {
+		this.anterior = anterior;
 	}
 	
 	public boolean isNull() {
 		return (chave == null ? true:false);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null || this.chave == null) {
-			return false;
-		}
-		@SuppressWarnings("unchecked")
-		NoDuplamenteEncadeado<T> aComparar = ((NoDuplamenteEncadeado<T>) obj);
-		if ( (this.chave.compareTo(aComparar.getChave()) == 0) &&
-				(this.getProximo().equals(aComparar.getProximo())) ) {
-			return true;
-		}
-		return false;
 	}
 
 	@Override

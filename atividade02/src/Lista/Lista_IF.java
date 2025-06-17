@@ -1,3 +1,4 @@
+package Lista;
 /*
  * Interface para implementa��o da classe "Lista",
  * que deve ser implementada como uma Lista Duplamente Encadeada
