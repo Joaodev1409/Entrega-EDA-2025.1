@@ -47,8 +47,7 @@ public class NoDuplamenteEncadeado{
 	public boolean isNull() {
 		return (chave == null ? true:false);
 	}
-
-	@Override
+    
 	public String toString() {
 		if (!this.isNull())
 			return this.chave.toString();
